@@ -33,6 +33,7 @@ namespace CatAdoption
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<CatDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddScoped<ICatRepository, CatRepository>();

@@ -9,9 +9,9 @@ namespace CatAdoption.Repositories
 {
     public class CatRepository : ICatRepository
     {
-        ApplicationDbContext _db;
+        CatDbContext _db;
 
-        public CatRepository(ApplicationDbContext db)
+        public CatRepository(CatDbContext db)
         {
             _db = db;
         }
