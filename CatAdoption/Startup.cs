@@ -12,6 +12,7 @@ using CatAdoption.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CatAdoption.Repositories;
 
 namespace CatAdoption
 {
@@ -34,6 +35,8 @@ namespace CatAdoption
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<ICatRepository, CatRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
