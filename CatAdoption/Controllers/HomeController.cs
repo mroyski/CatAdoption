@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CatAdoption.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CatAdoption.Controllers
 {
@@ -23,6 +24,7 @@ namespace CatAdoption.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
