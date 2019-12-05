@@ -29,7 +29,32 @@ namespace CatAdoption.Data
                     Gender = "Male",
                     Age = 4,
                     Bio = "A fluffy and handsome cuddle muffin."
+                },
+                new Cat()
+                {
+                    CatId = 2,
+                    Name = "Kyrie",
+                    Gender = "Male",
+                    Age = 4,
+                    Bio = "He has a lot to say..."
+                },
+                new Cat()
+                {
+                    CatId = 3,
+                    Name = "Crusher",
+                    Gender = "Male",
+                    Age = 4,
+                    Bio = "His neck is a little crooked."
+                },
+                new Cat()
+                {
+                    CatId = 4,
+                    Name = "Kelly",
+                    Gender = "Female",
+                    Age = 4,
+                    Bio = "Not a real cat."
                 });
+
         }
     }
 }
