@@ -3,14 +3,16 @@ using CatAdoption.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CatAdoption.Migrations
 {
     [DbContext(typeof(CatDbContext))]
-    partial class CatDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191206000517_PostAdoptMigrate")]
+    partial class PostAdoptMigrate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +39,8 @@ namespace CatAdoption.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("CatId");
 
@@ -51,7 +53,8 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "A fluffy and handsome cuddle muffin.",
                             Gender = "Male",
-                            Name = "Herbert"
+                            Name = "Herbert",
+                            UserId = 0
                         },
                         new
                         {
@@ -59,7 +62,8 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "He has a lot to say...",
                             Gender = "Male",
-                            Name = "Kyrie"
+                            Name = "Kyrie",
+                            UserId = 0
                         },
                         new
                         {
@@ -67,7 +71,8 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "His neck is a little crooked.",
                             Gender = "Male",
-                            Name = "Crusher"
+                            Name = "Crusher",
+                            UserId = 0
                         },
                         new
                         {
@@ -75,7 +80,8 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "Not a real cat.",
                             Gender = "Female",
-                            Name = "Kelly"
+                            Name = "Kelly",
+                            UserId = 0
                         });
                 });
 #pragma warning restore 612, 618

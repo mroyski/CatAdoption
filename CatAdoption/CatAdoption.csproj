@@ -5,6 +5,11 @@
     <UserSecretsId>aspnet-CatAdoption-D8715518-F870-45F6-BE77-D95E7414D64D</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\AdoptDb\20191206012410_updateagain.cs" />
+    <Compile Remove="Migrations\AdoptDb\20191206012410_updateagain.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />

@@ -25,7 +25,6 @@ namespace CatAdoption
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -34,9 +33,13 @@ namespace CatAdoption
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddDbContext<CatDbContext>();
+            services.AddDbContext<AdoptDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("AdoptConnection")));
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddScoped<ICatRepository, CatRepository>();
+            services.AddScoped<IAdoptRepository, AdoptRepository>();
 
         }
 
@@ -51,7 +54,6 @@ namespace CatAdoption
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();

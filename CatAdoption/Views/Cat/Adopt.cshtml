@@ -10,8 +10,9 @@
 <div class="text-center">
     <hr />
     <h5>@Model.Gender</h5>
-    <h5>@Model.Age</h5>
+    <h5>Age: @Model.Age</h5>
     <p>@Model.Bio</p>
-    <a asp-action="AdoptSuccess" asp-route-id="@Model.CatId">Adopt</a> |
-        <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="AdoptSuccess" asp-route-id="@Model.CatId">Adopt</a>
+    <br />
+    <a asp-action="Index">Back to List</a>
 </div>

@@ -14,11 +14,14 @@ namespace CatAdoption.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         ICatRepository _catRepo;
+        IAdoptRepository _adoptRepo;
 
-        public CatController(ICatRepository catRepo, UserManager<IdentityUser> userManager)
+        public CatController(ICatRepository catRepo, IAdoptRepository adoptRepo, UserManager<IdentityUser> userManager)
         {
             _catRepo = catRepo;
             _userManager = userManager;
+            _adoptRepo = adoptRepo;
+
         }
         public IActionResult Index()
         {
@@ -42,12 +45,22 @@ namespace CatAdoption.Controllers
             return View(model);
         }
 
-        [HttpGet]
+        [HttpGet("cat/adopt/success/{id}")]
         [Authorize]
-        public string AdoptSuccess(int id)
+        public async Task<IActionResult> AdoptSuccessAsync(int id)
         {
-            var model = _catRepo.GetById(id);
-            return $"Successfully adopted {model.Name}";
+            var cat = _catRepo.GetById(id);
+            var userId = await _userManager.GetUserAsync(HttpContext.User);
+            _adoptRepo.Adopt(cat, userId.ToString());
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("cat/adoptedcats")]
+        [Authorize]
+        public IActionResult AdoptedCats()
+        {
+            var model = _adoptRepo.GetAll();
+            return View(model);
         }
     }
 }

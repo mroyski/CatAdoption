@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CatAdoption.Migrations
+namespace CatAdoption.Migrations.AdoptDb
 {
-    [DbContext(typeof(CatDbContext))]
-    partial class CatDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AdoptDbContext))]
+    partial class AdoptDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -18,9 +18,9 @@ namespace CatAdoption.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CatAdoption.Models.Cat", b =>
+            modelBuilder.Entity("CatAdoption.Models.Adoption", b =>
                 {
-                    b.Property<int>("CatId")
+                    b.Property<int>("AdoptionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -31,6 +31,9 @@ namespace CatAdoption.Migrations
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CatId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
@@ -40,42 +43,20 @@ namespace CatAdoption.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CatId");
+                    b.HasKey("AdoptionId");
 
-                    b.ToTable("Cats");
+                    b.ToTable("Adoptions");
 
                     b.HasData(
                         new
                         {
-                            CatId = 1,
+                            AdoptionId = 1,
                             Age = 4,
                             Bio = "A fluffy and handsome cuddle muffin.",
+                            CatId = 1,
                             Gender = "Male",
-                            Name = "Herbert"
-                        },
-                        new
-                        {
-                            CatId = 2,
-                            Age = 4,
-                            Bio = "He has a lot to say...",
-                            Gender = "Male",
-                            Name = "Kyrie"
-                        },
-                        new
-                        {
-                            CatId = 3,
-                            Age = 4,
-                            Bio = "His neck is a little crooked.",
-                            Gender = "Male",
-                            Name = "Crusher"
-                        },
-                        new
-                        {
-                            CatId = 4,
-                            Age = 4,
-                            Bio = "Not a real cat.",
-                            Gender = "Female",
-                            Name = "Kelly"
+                            Name = "Herbert",
+                            UserId = "mroyski@gmail.com"
                         });
                 });
 #pragma warning restore 612, 618
