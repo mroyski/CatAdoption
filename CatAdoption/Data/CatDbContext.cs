@@ -1,16 +1,11 @@
 ﻿using CatAdoption.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CatAdoption.Data
 {
     public class CatDbContext : DbContext
     {
         public DbSet<Cat> Cats { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = "Server=(localdb)\\mssqllocaldb;Database=Cats;Trusted_Connection=True;";

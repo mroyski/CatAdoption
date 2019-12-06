@@ -1,10 +1,7 @@
-﻿using CatAdoption.Models;
-using CatAdoption.Repositories;
+﻿using CatAdoption.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,10 +35,9 @@ namespace CatAdoption.Controllers
 
         [HttpGet("cat/adopt")]
         [Authorize]
-        public async Task<IActionResult> AdoptAsync(int id)
+        public IActionResult Adopt(int id)
         {
             var model = _catRepo.GetById(id);
-            var user = await _userManager.GetUserAsync(HttpContext.User);
             return View(model);
         }
 

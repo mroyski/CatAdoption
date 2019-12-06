@@ -1,4 +1,4 @@
-﻿/*#homePage {
-    background-image: url("/imgs/catbg.jpg.jpg");
-    background-position: center;
-}*/
+﻿#homePage {
+    background-image: url("imgs/crusher.jpg");
+    background-size: cover;
+}

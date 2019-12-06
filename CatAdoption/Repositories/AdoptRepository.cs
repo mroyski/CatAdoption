@@ -1,10 +1,8 @@
 ﻿using CatAdoption.Data;
 using CatAdoption.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace CatAdoption.Repositories
 {
