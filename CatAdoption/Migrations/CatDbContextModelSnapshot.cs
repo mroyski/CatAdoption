@@ -34,10 +34,10 @@ namespace CatAdoption.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CatId");
@@ -51,6 +51,7 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "A fluffy and handsome cuddle muffin.",
                             Gender = "Male",
+                            ImagePath = "herbert.jpg",
                             Name = "Herbert"
                         },
                         new
@@ -59,6 +60,7 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "He has a lot to say...",
                             Gender = "Male",
+                            ImagePath = "kyrie.jpg",
                             Name = "Kyrie"
                         },
                         new
@@ -67,6 +69,7 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "His neck is a little crooked.",
                             Gender = "Male",
+                            ImagePath = "crusher.jpg",
                             Name = "Crusher"
                         },
                         new
@@ -75,6 +78,7 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "Not a real cat.",
                             Gender = "Female",
+                            ImagePath = "kelly.jpg",
                             Name = "Kelly"
                         });
                 });

@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CatAdoption.Migrations.AdoptDb
+namespace CatAdoption.Migrations
 {
-    [DbContext(typeof(AdoptDbContext))]
-    [Migration("20191206055043_seeddata")]
-    partial class seeddata
+    [DbContext(typeof(CatDbContext))]
+    [Migration("20191206154938_CatImgFixed")]
+    partial class CatImgFixed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,9 +20,9 @@ namespace CatAdoption.Migrations.AdoptDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CatAdoption.Models.Adoption", b =>
+            modelBuilder.Entity("CatAdoption.Models.Cat", b =>
                 {
-                    b.Property<int>("AdoptionId")
+                    b.Property<int>("CatId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -33,32 +33,55 @@ namespace CatAdoption.Migrations.AdoptDb
                     b.Property<string>("Bio")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CatId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("CatId");
 
-                    b.HasKey("AdoptionId");
-
-                    b.ToTable("Adoptions");
+                    b.ToTable("Cats");
 
                     b.HasData(
                         new
                         {
-                            AdoptionId = 1,
+                            CatId = 1,
                             Age = 4,
                             Bio = "A fluffy and handsome cuddle muffin.",
-                            CatId = 1,
                             Gender = "Male",
-                            Name = "Herbert",
-                            UserId = "mroyski@gmail.com"
+                            ImagePath = "herbert.jpg",
+                            Name = "Herbert"
+                        },
+                        new
+                        {
+                            CatId = 2,
+                            Age = 4,
+                            Bio = "He has a lot to say...",
+                            Gender = "Male",
+                            ImagePath = "kyrie.jpg",
+                            Name = "Kyrie"
+                        },
+                        new
+                        {
+                            CatId = 3,
+                            Age = 4,
+                            Bio = "His neck is a little crooked.",
+                            Gender = "Male",
+                            ImagePath = "crusher.jpg",
+                            Name = "Crusher"
+                        },
+                        new
+                        {
+                            CatId = 4,
+                            Age = 4,
+                            Bio = "Not a real cat.",
+                            Gender = "Female",
+                            ImagePath = "kelly.jpg",
+                            Name = "Kelly"
                         });
                 });
 #pragma warning restore 612, 618

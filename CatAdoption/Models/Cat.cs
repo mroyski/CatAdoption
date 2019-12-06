@@ -12,6 +12,6 @@ namespace CatAdoption.Models
         public string Gender { get; set; }
         public int Age { get; set; }
         public string Bio { get; set; }
-        public string UserId { get; set; }
+        public string ImagePath { get; set; }
     }
 }

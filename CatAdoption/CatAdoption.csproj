@@ -6,8 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\AdoptDb\20191206012410_updateagain.cs" />
-    <Compile Remove="Migrations\AdoptDb\20191206012410_updateagain.Designer.cs" />
+    <Compile Remove="Migrations\20191206145416_AddedImages.cs" />
+    <Compile Remove="Migrations\20191206145416_AddedImages.Designer.cs" />
+    <Compile Remove="Migrations\20191206150412_Retry.cs" />
+    <Compile Remove="Migrations\20191206150412_Retry.Designer.cs" />
   </ItemGroup>
 
 

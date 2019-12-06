@@ -28,7 +28,8 @@ namespace CatAdoption.Data
                     Name = "Herbert",
                     Gender = "Male",
                     Age = 4,
-                    Bio = "A fluffy and handsome cuddle muffin."
+                    Bio = "A fluffy and handsome cuddle muffin.",
+                    ImagePath = "herbert.jpg"
                 },
                 new Cat()
                 {
@@ -36,7 +37,8 @@ namespace CatAdoption.Data
                     Name = "Kyrie",
                     Gender = "Male",
                     Age = 4,
-                    Bio = "He has a lot to say..."
+                    Bio = "He has a lot to say...",
+                    ImagePath = "kyrie.jpg"
                 },
                 new Cat()
                 {
@@ -44,7 +46,8 @@ namespace CatAdoption.Data
                     Name = "Crusher",
                     Gender = "Male",
                     Age = 4,
-                    Bio = "His neck is a little crooked."
+                    Bio = "His neck is a little crooked.",
+                    ImagePath = "crusher.jpg"
                 },
                 new Cat()
                 {
@@ -52,7 +55,8 @@ namespace CatAdoption.Data
                     Name = "Kelly",
                     Gender = "Female",
                     Age = 4,
-                    Bio = "Not a real cat."
+                    Bio = "Not a real cat.",
+                    ImagePath = "kelly.jpg"
                 });
 
         }

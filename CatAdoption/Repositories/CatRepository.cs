@@ -25,5 +25,11 @@ namespace CatAdoption.Repositories
         {
             return _db.Cats.Single(Cat => Cat.CatId == id);
         }
+
+        public void Delete(Cat cat)
+        {
+            _db.Cats.Remove(cat);
+            _db.SaveChanges();
+        }
     }
 }

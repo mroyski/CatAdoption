@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CatAdoption.Migrations
 {
     [DbContext(typeof(CatDbContext))]
-    [Migration("20191206004439_update")]
-    partial class update
+    [Migration("20191206154644_InitialCats")]
+    partial class InitialCats
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,11 +36,11 @@ namespace CatAdoption.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CatId");
 
@@ -53,8 +53,8 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "A fluffy and handsome cuddle muffin.",
                             Gender = "Male",
-                            Name = "Herbert",
-                            UserId = 0
+                            ImagePath = "~/imgs/herbert.jpg",
+                            Name = "Herbert"
                         },
                         new
                         {
@@ -62,8 +62,8 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "He has a lot to say...",
                             Gender = "Male",
-                            Name = "Kyrie",
-                            UserId = 0
+                            ImagePath = "~/imgs/kyrie.jpg",
+                            Name = "Kyrie"
                         },
                         new
                         {
@@ -71,8 +71,8 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "His neck is a little crooked.",
                             Gender = "Male",
-                            Name = "Crusher",
-                            UserId = 0
+                            ImagePath = "~/imgs/crusher.jpg",
+                            Name = "Crusher"
                         },
                         new
                         {
@@ -80,8 +80,8 @@ namespace CatAdoption.Migrations
                             Age = 4,
                             Bio = "Not a real cat.",
                             Gender = "Female",
-                            Name = "Kelly",
-                            UserId = 0
+                            ImagePath = "~/imgs/kelly.jpg",
+                            Name = "Kelly"
                         });
                 });
 #pragma warning restore 612, 618

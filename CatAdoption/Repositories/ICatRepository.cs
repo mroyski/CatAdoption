@@ -10,5 +10,6 @@ namespace CatAdoption.Repositories
     {
         IEnumerable<Cat> GetAll();
         Cat GetById(int id);
+        void Delete(Cat cat);
     }
 }

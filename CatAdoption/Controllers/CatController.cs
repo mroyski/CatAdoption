@@ -62,5 +62,16 @@ namespace CatAdoption.Controllers
             var model = _adoptRepo.GetAll();
             return View(model);
         }
+
+        [HttpGet("cat/mycats")]
+        [Authorize]
+        public async Task<IActionResult> MyCatsAsync()
+        {
+            var userId = await _userManager.GetUserAsync(HttpContext.User);
+            var currentUser = userId.ToString();
+            var usersCats = _adoptRepo.GetAll()
+                   .Where(usersCats => usersCats.UserId == currentUser);
+            return View(usersCats);
+        }
     }
 }
