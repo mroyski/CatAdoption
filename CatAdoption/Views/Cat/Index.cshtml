@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CatAdoption.Models.Cat>
+﻿@model CatAdoption.Models.CatGenderViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -7,10 +7,22 @@
 
 <h1>These fine felines need a home!</h1>
 <hr />
+
+<form asp-controller="Cat" asp-action="Index" method="get">
+    <p>
+
+        <select asp-for="CatGender" asp-items="Model.Genders">
+            <option value="">All</option>
+        </select>
+        <input type="submit" value="Filter" />
+
+    </p>
+</form>
+
 <div class="d-flex flex-wrap justify-content-around">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Cats)
     {
-        <div class="card col-12 col-md-6 col-lg-3 text-center" >
+        <div class="card col-12 col-md-6 col-lg-3 text-center">
             <img src="~/imgs/@item.ImagePath" class="card-img-top" alt="@item.Name">
             <div class="card-body justify-content-center">
                 <h5 class="card-title">@item.Name</h5>
