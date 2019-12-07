@@ -11,7 +11,7 @@
 <form asp-controller="Cat" asp-action="Index" method="get">
     <p>
 
-        <select asp-for="CatGender" asp-items="Model.Genders">
+        Gender: <select asp-for="CatGender" asp-items="Model.Genders">
             <option value="">All</option>
         </select>
         <input type="submit" value="Filter" />
