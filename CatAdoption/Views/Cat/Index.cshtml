@@ -23,19 +23,17 @@
     </p>
 </form>
 
-<div class="d-flex flex-wrap justify-content-around">
+<div class="d-flex flex-wrap">
     @foreach (var item in Model.Cats)
     {
         <div class="card col-12 col-md-6 col-lg-3 text-center">
-            <img src="~/imgs/@item.ImagePath" class="card-img-top" alt="@item.Name">
+            <img src="~/imgs/@item.ImagePath" class="card-img-top rounded pt-2" alt="@item.Name">
             <div class="card-body justify-content-center">
                 <h5 class="card-title">@item.Name</h5>
                 <p class="card-text">@item.Gender</p>
                 <p class="card-text">Age: @item.Age</p>
                 <p class="card-text">@item.Bio</p>
-
                 <a class="btn btn-primary" asp-action="adopt" asp-route-id="@item.CatId">Adopt</a>
-
             </div>
         </div>
     }
