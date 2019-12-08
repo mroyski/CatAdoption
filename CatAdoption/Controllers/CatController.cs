@@ -2,10 +2,13 @@
 using CatAdoption.Models;
 using CatAdoption.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,16 +18,17 @@ namespace CatAdoption.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly CatDbContext _catContext;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         ICatRepository _catRepo;
         IAdoptRepository _adoptRepo;
 
-        public CatController(ICatRepository catRepo, IAdoptRepository adoptRepo, UserManager<IdentityUser> userManager, CatDbContext catContext)
+        public CatController(ICatRepository catRepo, IAdoptRepository adoptRepo, UserManager<IdentityUser> userManager, CatDbContext catContext, IWebHostEnvironment hostingEnvironment)
         {
             _catRepo = catRepo;
             _userManager = userManager;
             _adoptRepo = adoptRepo;
             _catContext = catContext;
-
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public async Task<IActionResult> Index(string catGender, int catAge)
@@ -116,19 +120,40 @@ namespace CatAdoption.Controllers
         [Authorize]
         public IActionResult AddCat(int id)
         {
+            var addCatVM = new AddCatViewModel();
             var newCat = new Cat()
             {
                 CatId = id
             };
-            return View(newCat);
+            return View(addCatVM);
         }        
 
         [HttpPost]
         [Authorize]
-        public IActionResult AddCat(Cat cat)
+        public IActionResult AddCat(AddCatViewModel model)
         {
-            _catRepo.AddCat(cat);
-            return RedirectToAction("AdoptedCats");
+            if (ModelState.IsValid)
+            {
+                string uniqueFileName = null;
+                if(model.Image != null)
+                {
+                    string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "imgs");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    model.Image.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+                Cat newCat = new Cat
+                {
+                    Name = model.Name,
+                    Age = model.Age,
+                    Gender = model.Gender,
+                    Bio = model.Bio,
+                    ImagePath = uniqueFileName
+                };
+                _catRepo.AddCat(newCat);
+                return RedirectToAction("Details", new { id = newCat.CatId });
+            }
+            return View();
         }
     }
 }
