@@ -29,5 +29,10 @@ namespace CatAdoption.Repositories
             _db.Cats.Remove(cat);
             _db.SaveChanges();
         }
+        public void AddCat(Cat cat)
+        {
+            _db.Cats.Add(cat);
+            _db.SaveChanges();
+        }
     }
 }

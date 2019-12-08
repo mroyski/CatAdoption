@@ -41,7 +41,7 @@ namespace CatAdoption.Controllers
                                        select a.Age;
 
             var ageCats = from a in _catContext.Cats
-                   select a;
+                          select a;
 
             if (!string.IsNullOrEmpty(catGender))
             {
@@ -110,6 +110,25 @@ namespace CatAdoption.Controllers
             var usersCats = _adoptRepo.GetAll()
                    .Where(usersCats => usersCats.UserId == currentUser);
             return View(usersCats);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult AddCat(int id)
+        {
+            var newCat = new Cat()
+            {
+                CatId = id
+            };
+            return View(newCat);
+        }        
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult AddCat(Cat cat)
+        {
+            _catRepo.AddCat(cat);
+            return RedirectToAction("AdoptedCats");
         }
     }
 }
