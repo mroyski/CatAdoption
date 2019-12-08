@@ -26,11 +26,6 @@ namespace CatAdoption.Controllers
             _catContext = catContext;
 
         }
-        //public IActionResult Index()
-        //{
-        //    var model = _catRepo.GetAll();
-        //    return View(model);
-        //}
 
         public async Task<IActionResult> Index(string catGender, int catAge)
         {
