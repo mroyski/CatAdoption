@@ -12,5 +12,8 @@ namespace CatAdoption.Models
         public SelectList Genders { get; set; }
         public string CatGender { get; set; }
         public string Gender { get; set; }
+        public SelectList Ages { get; set; }
+        public int CatAge { get; set; }
+        public int Age { get; set; }
     }
 }

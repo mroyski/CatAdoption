@@ -32,7 +32,7 @@ namespace CatAdoption.Controllers
         //    return View(model);
         //}
 
-        public async Task<IActionResult> Index(string catGender)
+        public async Task<IActionResult> Index(string catGender, int catAge)
         {
             IQueryable<string> genderQuery = from g in _catContext.Cats
                                              orderby g.Gender
@@ -41,14 +41,32 @@ namespace CatAdoption.Controllers
             var cats = from g in _catContext.Cats
                        select g;
 
+            IQueryable<int> ageQuery = from a in _catContext.Cats
+                                       orderby a.Age
+                                       select a.Age;
+
+            var ageCats = from a in _catContext.Cats
+                   select a;
+
             if (!string.IsNullOrEmpty(catGender))
             {
                 cats = cats.Where(x => x.Gender == catGender);
             }
 
+            if (catAge != 0)
+            {
+                cats = cats.Where(x => x.Age == catAge);
+            }
+
+            if (catAge != 0 && (!string.IsNullOrEmpty(catGender)))
+            {
+                cats = ageCats.Where(x => x.Age == catAge && x.Gender == catGender);
+            }
+
             var catGenderVM = new CatGenderViewModel
             {
                 Genders = new SelectList(await genderQuery.Distinct().ToListAsync()),
+                Ages = new SelectList(await ageQuery.Distinct().ToListAsync()),
                 Cats = await cats.ToListAsync()
             };
 

@@ -52,6 +52,24 @@ namespace CatAdoption.Data
                     Age = 4,
                     Bio = "Not a real cat.",
                     ImagePath = "kelly.jpg"
+                },
+                new Cat()
+                {
+                    CatId = 5,
+                    Name = "Shiva",
+                    Gender = "Female",
+                    Age = 2,
+                    Bio = "Auspicious One",
+                    ImagePath = "shiva.jpg"
+                },
+                new Cat()
+                {
+                    CatId = 6,
+                    Name = "Scooter",
+                    Gender = "Male",
+                    Age = 1,
+                    Bio = "Fast as heck",
+                    ImagePath = "scooter.jpg"
                 });
 
         }
