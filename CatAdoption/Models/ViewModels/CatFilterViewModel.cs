@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CatAdoption.Models
 {
-    public class CatGenderViewModel
+    public class CatFilterViewModel
     {
         public List<Cat> Cats { get; set; }
         public SelectList Genders { get; set; }

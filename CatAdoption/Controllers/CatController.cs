@@ -62,14 +62,14 @@ namespace CatAdoption.Controllers
                 cats = ageCats.Where(x => x.Age == catAge && x.Gender == catGender);
             }
 
-            var catGenderVM = new CatGenderViewModel
+            var catFilterVM = new CatFilterViewModel
             {
                 Genders = new SelectList(await genderQuery.Distinct().ToListAsync()),
                 Ages = new SelectList(await ageQuery.Distinct().ToListAsync()),
                 Cats = await cats.ToListAsync()
             };
 
-            return View(catGenderVM);
+            return View(catFilterVM);
         }
 
         [Authorize]
