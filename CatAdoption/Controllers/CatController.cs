@@ -47,19 +47,17 @@ namespace CatAdoption.Controllers
             var ageCats = from a in _catContext.Cats
                           select a;
 
-            if (!string.IsNullOrEmpty(catGender))
-            {
-                cats = cats.Where(x => x.Gender == catGender);
-            }
-
-            if (catAge != 0)
-            {
-                cats = cats.Where(x => x.Age == catAge);
-            }
-
             if (catAge != 0 && (!string.IsNullOrEmpty(catGender)))
             {
                 cats = ageCats.Where(x => x.Age == catAge && x.Gender == catGender);
+            }
+            else if (!string.IsNullOrEmpty(catGender))
+            {
+                cats = cats.Where(x => x.Gender == catGender);
+            }
+            else if (catAge != 0)
+            {
+                cats = cats.Where(x => x.Age == catAge);
             }
 
             var catFilterVM = new CatFilterViewModel
