@@ -49,7 +49,7 @@ namespace CatAdoption.Controllers
 
             if (catAge != 0 && (!string.IsNullOrEmpty(catGender)))
             {
-                cats = ageCats.Where(x => x.Age == catAge && x.Gender == catGender);
+                cats = cats.Where(x => x.Age == catAge && x.Gender == catGender);
             }
             else if (!string.IsNullOrEmpty(catGender))
             {
