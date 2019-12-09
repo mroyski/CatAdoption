@@ -121,10 +121,6 @@ namespace CatAdoption.Controllers
         public IActionResult AddCat(int id)
         {
             var addCatVM = new AddCatViewModel();
-            var newCat = new Cat()
-            {
-                CatId = id
-            };
             return View(addCatVM);
         }        
 
