@@ -116,7 +116,7 @@ namespace CatAdoption.Controllers
 
         [HttpGet]
         [Authorize]
-        public IActionResult AddCat(int id)
+        public IActionResult AddCat()
         {
             var addCatVM = new AddCatViewModel();
             return View(addCatVM);
